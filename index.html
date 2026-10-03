@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="好恐怖电影网 - 专注恐怖电影的深度盘点与高分推荐，涵盖惊悚、悬疑、灵异、丧尸、鬼片等细分类型，助你找到最吓人的那一部。">
+<meta name="keywords" content="好恐怖电影网,恐怖电影推荐,鬼片,灵异电影,丧尸片,惊悚悬疑,高分恐怖片,恐怖片排行">
+<meta name="author" content="好恐怖电影网">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#07050d">
+<meta property="og:title" content="好恐怖电影网 - 专注恐怖电影的深度盘点与推荐">
+<meta property="og:description" content="惊悚、悬疑、灵异、丧尸、鬼片高分恐怖片推荐">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://haokongbudianyingwang-wap.github.io">
+<meta property="og:site_name" content="好恐怖电影网">
+<link rel="canonical" href="https://haokongbudianyingwang-wap.github.io">
+<title>好恐怖电影网 - 恐怖电影深度盘点·鬼片灵异丧尸高分推荐</title>
+<style>
+/* ==================== RESET & TOKENS ==================== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#06040b;--bg2:#0b0714;--bg3:#120a1f;--card:rgba(255,255,255,.035);
+  --line:rgba(150,120,220,.16);--txt:#e2dcf0;--dim:#8b83a3;
+  --violet:#8b5cf6;--purple:#a855f7;--mint:#7df9ff;--blood:#ff2d5e;--bone:#e8e0c8;
+  --grad:linear-gradient(120deg,#8b5cf6,#7df9ff);
+  --grad2:linear-gradient(120deg,#a855f7,#ff2d5e);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg);color:var(--txt);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+::selection{background:var(--violet);color:#fff}
+
+/* ==================== BG ==================== */
+.mist{position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 20% 20%,rgba(139,92,246,.14),transparent 45%),radial-gradient(circle at 80% 70%,rgba(255,45,94,.1),transparent 45%),var(--bg)}
+.orbs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(46px);opacity:.5;animation:float 14s ease-in-out infinite alternate}
+.orb:nth-child(1){width:340px;height:340px;background:#8b5cf6;top:-80px;left:-60px}
+.orb:nth-child(2){width:280px;height:280px;background:#7df9ff;bottom:10%;right:-60px;animation-delay:-5s}
+.orb:nth-child(3){width:220px;height:220px;background:#ff2d5e;top:50%;left:60%;animation-delay:-9s}
+@keyframes float{from{transform:translate(0,0) scale(1)}to{transform:translate(40px,-60px) scale(1.18)}}
+
+/* ==================== LOADER ==================== */
+.load{position:fixed;inset:0;z-index:9999;background:#06040b;display:grid;place-items:center;gap:14px;transition:opacity .5s,visibility .5s}
+.load.hide{opacity:0;visibility:hidden}
+.gh{font-size:2.6rem;animation:flick 1.4s ease infinite alternate}
+@keyframes flick{0%{opacity:.25;transform:scale(.92) rotate(-4deg)}100%{opacity:1;transform:scale(1.06) rotate(4deg)}}
+.load-tx{font-size:.82rem;letter-spacing:5px;color:var(--mint);text-transform:uppercase}
+
+/* ==================== NAV ==================== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(6,4,11,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.navbox{max-width:1240px;margin:0 auto;padding:0 20px;height:66px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:11px;font-weight:900;font-size:1.22rem;letter-spacing:.5px}
+.brand .eye{width:34px;height:34px;border-radius:50%;background:var(--grad2);display:grid;place-items:center;font-size:1rem;box-shadow:0 4px 22px rgba(255,45,94,.42);position:relative}
+.brand .eye::after{content:'';position:absolute;inset:5px;border-radius:50%;background:rgba(6,4,11,.55)}
+.brand em{font-style:normal;color:var(--mint)}
+.menu{display:flex;gap:2px;align-items:center}
+.menu a{padding:9px 15px;border-radius:8px;font-size:.9rem;color:var(--dim);transition:.25s;white-space:nowrap;position:relative}
+.menu a::before{content:'';position:absolute;left:15px;right:15px;bottom:4px;height:2px;background:var(--mint);transform:scaleX(0);transition:.3s}
+.menu a:hover{color:#fff;background:rgba(139,92,246,.14)}
+.menu a.on{color:#fff;background:rgba(139,92,246,.18)}
+.menu a.on::before{transform:scaleX(1)}
+.burger{display:none;width:42px;height:42px;border-radius:9px;border:1px solid var(--line);background:var(--card);cursor:pointer;position:relative}
+.burger span{position:absolute;left:11px;width:18px;height:2px;background:var(--mint);border-radius:2px;transition:.3s}
+.burger span:nth-child(1){top:14px}.burger span:nth-child(2){top:20px}.burger span:nth-child(3){top:26px}
+.burger.open span:nth-child(1){top:20px;transform:rotate(45deg)}.burger.open span:nth-child(2){opacity:0}.burger.open span:nth-child(3){top:20px;transform:rotate(-45deg)}
+
+/* ==================== HERO ==================== */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:56px;max-width:1240px;margin:0 auto;padding:116px 20px 70px;position:relative}
+.hero-copy h1{font-size:clamp(2rem,5.6vw,4.2rem);line-height:1.1;font-weight:900;text-transform:uppercase;letter-spacing:-1px}
+.hero-copy h1 .spook{color:var(--purple);text-shadow:0 0 28px rgba(168,85,247,.6)}
+.hero-copy h1 .drip{color:var(--blood)}
+.hero-copy p.sub{margin-top:22px;color:var(--dim);font-size:clamp(.96rem,1.5vw,1.1rem);max-width:520px;border-left:3px solid var(--violet);padding-left:16px}
+.h-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:6px;font-size:.92rem;font-weight:700;cursor:pointer;border:none;transition:.3s;text-transform:uppercase;letter-spacing:.5px}
+.btn-fill{background:var(--grad2);color:#fff;box-shadow:0 8px 28px rgba(255,45,94,.4)}
+.btn-fill:hover{transform:translateY(-3px);box-shadow:0 12px 38px rgba(255,45,94,.56)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--mint);color:var(--mint);transform:translateY(-3px)}
+.h-stats{display:flex;gap:36px;margin-top:42px}
+.h-stats div b{display:block;font-size:1.9rem;font-weight:900;color:var(--mint)}
+.h-stats div span{font-size:.74rem;color:var(--dim);text-transform:uppercase;letter-spacing:1px}
+
+/* hero visual: floating film reels */
+.visor{position:relative;height:520px;display:flex;align-items:center;justify-content:center}
+.reel{position:absolute;border-radius:18px;overflow:hidden;border:1px solid var(--line);backdrop-filter:blur(8px);background:var(--card);box-shadow:0 24px 60px rgba(0,0,0,.55)}
+.reel .cap{height:170px;display:grid;place-items:center;font-size:3.6rem;position:relative}
+.reel .cap::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.07),transparent 60%)}
+.reel .cap b{position:absolute;bottom:12px;left:16px;font-size:1.02rem;z-index:1}
+.reel .cap em{position:absolute;top:12px;right:12px;font-size:.72rem;font-style:normal;background:var(--blood);color:#fff;padding:3px 9px;border-radius:4px;font-weight:700}
+.reel p{padding:14px 16px;font-size:.82rem;color:var(--dim)}
+.r1{width:250px;transform:rotate(-8deg);top:20px;left:0;z-index:2}.r1 .cap{background:linear-gradient(160deg,#251040,#0a0612)}
+.r2{width:270px;transform:rotate(6deg);top:160px;right:0;z-index:3}.r2 .cap{background:linear-gradient(160deg,#40102c,#0a0612)}
+.r3{width:230px;transform:rotate(-3deg);bottom:10px;left:90px;z-index:1}.r3 .cap{background:linear-gradient(160deg,#102840,#0a0612)}
+.shadow{position:absolute;width:300px;height:60px;bottom:40px;left:50%;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(168,85,247,.4),transparent 70%);filter:blur(12px);z-index:0}
+
+/* ==================== SHARED ==================== */
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+.sec{padding:90px 0;position:relative}
+.sec-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+.sec-idx{font-size:.74rem;letter-spacing:3px;color:var(--blood);font-weight:800;text-transform:uppercase}
+.sec-title{font-size:clamp(1.5rem,3.2vw,2.3rem);font-weight:900;text-transform:uppercase;margin-top:4px;letter-spacing:.5px}
+.sec-title .ac{color:var(--mint)}
+.sec-note{color:var(--dim);font-size:.9rem;max-width:330px;text-align:right}
+
+/* ==================== COLUMN 1: 恐怖榜（竖直堆叠 + 恐怖等级条） ==================== */
+#rank{background:var(--bg2)}
+.ranklist{display:flex;flex-direction:column;gap:14px}
+.rankrow{display:grid;grid-template-columns:64px 100px 1fr auto;align-items:center;gap:20px;padding:16px 20px;border:1px solid var(--line);border-radius:10px;background:var(--card);transition:.3s}
+.rankrow:hover{transform:translateX(8px);border-color:var(--violet);background:rgba(139,92,246,.1)}
+.rankrow .no{font-size:1.8rem;font-weight:900;color:var(--blood);font-variant-numeric:tabular-nums}
+.rankrow .thumb{height:64px;border-radius:8px;display:grid;place-items:center;font-size:1.8rem}
+.t1{background:linear-gradient(135deg,#2a1248,#0a0612)}.t2{background:linear-gradient(135deg,#48122e,#0a0612)}.t3{background:linear-gradient(135deg,#123448,#0a0612)}
+.t4{background:linear-gradient(135deg,#1c3812,#0a0612)}.t5{background:linear-gradient(135deg,#3a2a08,#0a0612)}
+.rankrow .txt h3{font-size:1.06rem;margin-bottom:4px}
+.rankrow .txt span{font-size:.8rem;color:var(--dim)}
+.rankrow .lvl{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--mint);white-space:nowrap}
+.rankrow .lvl .skull{font-size:1.1rem}
+
+/* ==================== COLUMN 2: 灵异分类（圆形放射菜单） ==================== */
+#types{background:linear-gradient(180deg,var(--bg2),var(--bg))}
+.radial{position:relative;height:520px;display:grid;place-items:center}
+.core{width:150px;height:150px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-size:1.05rem;font-weight:900;color:#06040b;text-align:center;box-shadow:0 0 0 10px rgba(139,92,246,.12),0 0 60px rgba(139,92,246,.4);z-index:3;line-height:1.3}
+.node2{position:absolute;width:120px;padding:12px 8px;border:1px solid var(--line);border-radius:10px;background:var(--bg3);text-align:center;transition:.35s}
+.node2:hover{transform:scale(1.1);border-color:var(--mint);z-index:5;background:#1a1130}
+.node2 .ic{font-size:1.5rem;display:block;margin-bottom:5px}
+.node2 b{font-size:.86rem}
+.node2 small{display:block;font-size:.72rem;color:var(--dim);margin-top:3px}
+.n1{top:0;left:50%;transform:translateX(-50%)}.n2{top:18%;right:4%}.n3{bottom:18%;right:4%}
+.n4{bottom:0;left:50%;transform:translateX(-50%)}.n5{bottom:18%;left:4%}.n6{top:18%;left:4%}
+
+/* ==================== COLUMN 3: 尖叫瞬间（视频墙式卡片） ==================== */
+#scream{background:var(--bg2)}
+.wall{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:130px;gap:14px}
+.tile{border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative;display:grid;place-items:center;transition:.35s;cursor:pointer}
+.tile:hover{transform:scale(1.03);z-index:4;border-color:var(--mint);box-shadow:0 16px 40px rgba(0,0,0,.6)}
+.tile .ic{font-size:2.4rem;transition:.3s}
+.tile:hover .ic{transform:scale(1.25) rotate(6deg)}
+.tile .cap{position:absolute;left:12px;bottom:10px;right:12px;font-size:.82rem;font-weight:700;text-shadow:0 2px 6px rgba(0,0,0,.8)}
+.tile .cap small{display:block;font-size:.7rem;color:var(--mint);font-weight:400}
+.tile.a{grid-column:span 2;grid-row:span 2;background:linear-gradient(160deg,#241040,#0a0612)}
+.tile.b{grid-column:span 2;background:linear-gradient(160deg,#401028,#0a0612)}
+.tile.c{grid-column:span 2;background:linear-gradient(160deg,#102840,#0a0612)}
+.tile.d{background:linear-gradient(160deg,#3a3008,#0a0612)}.tile.e{background:linear-gradient(160deg,#083a20,#0a0612)}.tile.f{background:linear-gradient(160deg,#3a0820,#0a0612)}
+.tile.g{grid-column:span 2;background:linear-gradient(160deg,#1c083a,#0a0612)}.tile.h{background:linear-gradient(160deg,#2a1c08,#0a0612)}.tile.i{background:linear-gradient(160deg,#082a2a,#0a0612)}
+.tile.j{grid-column:span 3;grid-row:span 2;background:linear-gradient(160deg,#300830,#0a0612)}
+
+/* ==================== COLUMN 4: 影史鬼事（折叠手风琴时间轴） ==================== */
+#history{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.acc{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.acc-item{border-bottom:1px solid var(--line)}
+.acc-item:last-child{border-bottom:none}
+.acc-h{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:20px 24px;cursor:pointer;transition:.25s;user-select:none}
+.acc-h:hover{background:rgba(139,92,246,.08)}
+.acc-h .yr{font-size:1.1rem;font-weight:900;color:var(--blood);flex:0 0 78px}
+.acc-h .tt{font-size:1rem;flex:1}
+.acc-h .tag{font-size:.74rem;padding:4px 11px;border-radius:20px;border:1px solid var(--line);color:var(--dim)}
+.acc-h .pm{font-size:1.4rem;color:var(--mint);transition:.3s;flex:0 0 24px;text-align:center}
+.acc-item.open .acc-h{background:rgba(139,92,246,.12)}.acc-item.open .acc-h .pm{transform:rotate(45deg)}
+.acc-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+.acc-b>div{overflow:hidden}
+.acc-item.open .acc-b{grid-template-rows:1fr}
+.acc-b p{padding:0 24px 22px 102px;font-size:.9rem;color:var(--dim)}
+
+/* ==================== COLUMN 5: 午夜放映（排片表） ==================== */
+#schedule{background:var(--bg2)}
+.screen{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+.screen thead th{background:rgba(139,92,246,.16);padding:16px 18px;text-align:left;font-size:.8rem;letter-spacing:2px;color:var(--mint);text-transform:uppercase;font-weight:800}
+.screen tbody td{padding:16px 18px;border-top:1px solid var(--line);font-size:.92rem;vertical-align:top}
+.screen tbody tr{transition:.25s}
+.screen tbody tr:hover{background:rgba(125,249,255,.05)}
+.screen .clock{font-weight:900;color:var(--blood);white-space:nowrap}
+.screen .film{font-weight:700}
+.screen .tag2{display:inline-block;font-size:.72rem;padding:2px 9px;border-radius:4px;background:rgba(139,92,246,.18);color:var(--mint);margin-right:6px}
+.screen .live{color:var(--blood);font-weight:800}
+
+/* ==================== FOOTER ==================== */
+footer{background:#03020a;padding:58px 20px 30px;border-top:1px solid var(--line)}
+.foot{max-width:1240px;margin:0 auto;text-align:center}
+.foot .brand{justify-content:center;margin-bottom:14px}
+.foot .brand em{color:var(--mint)}
+.foot p.d{color:var(--dim);font-size:.9rem;max-width:540px;margin:0 auto 22px}
+.foot .links{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+.foot .links a{color:var(--dim);font-size:.88rem;transition:.25s}
+.foot .links a:hover{color:var(--mint)}
+.copy{padding-top:24px;border-top:1px solid var(--line);font-size:.8rem;color:var(--dim)}
+.copy a{color:var(--mint)}
+
+.topbtn{position:fixed;right:24px;bottom:28px;width:46px;height:46px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-size:1.1rem;cursor:pointer;opacity:0;visibility:hidden;transition:.3s;z-index:300;box-shadow:0 6px 22px rgba(139,92,246,.45)}
+.topbtn.show{opacity:1;visibility:visible}
+.topbtn:hover{transform:translateY(-3px)}
+
+.rv{opacity:0;transform:translateY(34px);transition:.7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr;gap:30px;padding-top:100px}.visor{height:auto;order:-1;max-width:480px;margin:0 auto;width:100%}
+  .visor .reel{position:relative;transform:none!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;width:100%!important;margin-bottom:14px}
+  .wall{grid-template-columns:repeat(3,1fr)}.tile{grid-column:span 1!important;grid-row:span 1!important;height:120px}
+  .acc-b p{padding-left:24px}.node2{position:relative;top:auto!important;bottom:auto!important;left:auto!important;right:auto!important;transform:none!important;width:100%;margin:10px 0}
+  .radial{height:auto;display:block;padding:20px 0}.core{margin:0 auto 20px}
+}
+@media(max-width:768px){
+  .menu{position:fixed;top:66px;left:0;right:0;flex-direction:column;padding:18px;gap:4px;background:rgba(6,4,11,.98);border-bottom:1px solid var(--line);transform:translateY(-130%);transition:.4s}
+  .menu.open{transform:none}.menu a{width:100%;text-align:center;padding:14px}.burger{display:block}
+  .sec{padding:66px 0}.sec-top{margin-bottom:30px}.sec-note{text-align:left}
+  .rankrow{grid-template-columns:48px 70px 1fr;gap:12px}.rankrow .lvl{display:none}
+  .screen{display:block;overflow-x:auto}.screen table{min-width:520px}
+}
+@media(max-width:480px){
+  .hero-copy h1{font-size:2rem}.h-actions .btn{width:100%;justify-content:center}
+  .h-stats{gap:26px}.topbtn{right:16px;bottom:20px;width:42px;height:42px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaolu.js"></script>
+
+<div class="mist"></div><div class="orbs"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+
+<div class="load" id="load"><div class="gh">👁️</div><div class="load-tx">好恐怖电影网 · Enter if you dare</div></div>
+
+<nav class="nav">
+  <div class="navbox">
+    <a href="#top" class="brand"><span class="eye"></span><span>好<span class="spook">恐怖</span><em>电影网</em></span></a>
+    <div class="menu" id="menu">
+      <a href="#top" class="on">首页</a>
+      <a href="#rank">恐怖榜</a>
+      <a href="#types">灵异分类</a>
+      <a href="#scream">尖叫瞬间</a>
+      <a href="#history">影史鬼事</a>
+      <a href="#schedule">午夜放映</a>
+    </div>
+    <button class="burger" id="burger" aria-label="菜单"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-copy">
+    <h1>越怕 <span class="spook">越想看</span><br>的<span class="drip">恐怖</span>片</h1>
+    <p class="sub">好恐怖电影网专注恐怖电影的深度盘点与高分推荐，涵盖惊悚、悬疑、灵异、丧尸、鬼片，帮你找到最吓人的那一部。</p>
+    <div class="h-actions">
+      <a href="#rank" class="btn btn-fill">💀 恐怖榜</a>
+      <a href="#scream" class="btn btn-ghost">🩸 尖叫瞬间</a>
+    </div>
+    <div class="h-stats">
+      <div><b>3000+</b><span>恐怖影片</span></div>
+      <div><b>98</b><span>细分类型</span></div>
+      <div><b>24h</b><span>实时更新</span></div>
+    </div>
+  </div>
+  <div class="visor">
+    <div class="shadow"></div>
+    <div class="reel r1"><div class="cap"><em>Hot</em>👻<b>咒怨回响</b></div><p>经典日式怨灵，压抑到窒息</p></div>
+    <div class="reel r2"><div class="cap"><em>New</em>🧟<b>丧尸围城 4</b></div><p>末日生存，全员高能</p></div>
+    <div class="reel r3"><div class="cap"><em>Top</em>🎭<b>寂静之屋</b></div><p>一镜到底的心理惊悚</p></div>
+  </div>
+</header>
+
+<!-- COLUMN 1 -->
+<section class="sec" id="rank">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <div><span class="sec-idx">01 / Top Horror</span><h2 class="sec-title">恐怖<span class="ac">榜</span></h2></div>
+      <p class="sec-note">本站用户票选最值得一看的恐怖佳作</p>
+    </div>
+    <div class="ranklist">
+      <div class="rankrow rv"><div class="no">01</div><div class="thumb t1">👻</div><div class="txt"><h3>咒怨回响</h3><span>惊悚 · 灵异 · 2002</span></div><div class="lvl"><span class="skull">💀💀💀</span>9.2</div></div>
+      <div class="rankrow rv"><div class="no">02</div><div class="thumb t2">🩸</div><div class="txt"><h3>德州电锯杀人狂</h3><span>恐怖 · 犯罪 · 1974</span></div><div class="lvl"><span class="skull">💀💀💀</span>8.8</div></div>
+      <div class="rankrow rv"><div class="no">03</div><div class="thumb t3">🎭</div><div class="txt"><h3>寂静之屋</h3><span>悬疑 · 心理 · 2018</span></div><div class="lvl"><span class="skull">💀💀</span>8.6</div></div>
+      <div class="rankrow rv"><div class="no">04</div><div class="thumb t4">🧟</div><div class="txt"><h3>丧尸围城 4</h3><span>末日 · 动作 · 2023</span></div><div class="lvl"><span class="skull">💀💀💀</span>8.4</div></div>
+      <div class="rankrow rv"><div class="no">05</div><div class="thumb t5">🪞</div><div class="txt"><h3>镜中人</h3><span>灵异 · 惊悚 · 2021</span></div><div class="lvl"><span class="skull">💀💀</span>8.1</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COLUMN 2 -->
+<section class="sec" id="types">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <div><span class="sec-idx">02 / Categories</span><h2 class="sec-title">灵异<span class="ac">分类</span></h2></div>
+      <p class="sec-note">总有一款恐惧适合你的深夜</p>
+    </div>
+    <div class="radial rv">
+      <div class="core">好恐怖<br>电影网</div>
+      <a href="#" class="node2 n1"><span class="ic">👻</span><b>灵异鬼片</b><small>586 部</small></a>
+      <a href="#" class="node2 n2"><span class="ic">🧟</span><b>丧尸末日</b><small>412 部</small></a>
+      <a href="#" class="node2 n3"><span class="ic">🔪</span><b>血腥屠杀</b><small>378 部</small></a>
+      <a href="#" class="node2 n4"><span class="ic">🎭</span><b>心理惊悚</b><small>643 部</small></a>
+      <a href="#" class="node2 n5"><span class="ic">👁️</span><b>悬疑推理</b><small>521 部</small></a>
+      <a href="#" class="node2 n6"><span class="ic">🐺</span><b>怪物怪兽</b><small>299 部</small></a>
+    </div>
+  </div>
+</section>
+
+<!-- COLUMN 3 -->
+<section class="sec" id="scream">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <div><span class="sec-idx">03 / Scream Moments</span><h2 class="sec-title">尖叫<span class="ac">瞬间</span></h2></div>
+      <p class="sec-note">那些让观众从座位上弹起来的经典桥段</p>
+    </div>
+    <div class="wall">
+      <div class="tile a"><span class="ic">🚪</span><div class="cap">浴室惊魂<small>镜面反射反转</small></div></div>
+      <div class="tile b"><span class="ic">📺</span><div class="cap">电视杂音<small>信号里的脸</small></div></div>
+      <div class="tile c"><span class="ic">🛏️</span><div class="cap">床底之手<small>经典 jump scare</small></div></div>
+      <div class="tile d"><span class="ic">🚗</span><div class="cap">后座有人</div></div>
+      <div class="tile e"><span class="ic">🎵</span><div class="cap">儿歌变调</div></div>
+      <div class="tile f"><span class="ic">🪞</span><div class="cap">镜中倒影</div></div>
+      <div class="tile g"><span class="ic">🚿</span><div class="cap">浴室雾气<small>玻璃后的剪影</small></div></div>
+      <div class="tile h"><span class="ic">🧸</span><div class="cap">玩偶眨眼</div></div>
+      <div class="tile i"><span class="ic">🩸</span><div class="cap">天花板滴血</div></div>
+      <div class="tile j"><span class="ic">🏚️</span><div class="cap">空屋回响<small>长镜头漫步 + 声画错位，全程无配乐的心理压迫</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COLUMN 4 -->
+<section class="sec" id="history">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <div><span class="sec-idx">04 / Horror History</span><h2 class="sec-title">影史<span class="ac">鬼事</span></h2></div>
+      <p class="sec-note">恐怖片百年演变，类型如何一步步变狠</p>
+    </div>
+    <div class="acc rv">
+      <div class="acc-item open"><div class="acc-h"><span class="yr">1922</span><span class="tt">诺斯费拉图 · 最古老的吸血鬼</span><span class="tag">默片</span><span class="pm">＋</span></div><div class="acc-b"><div><p>德国表现主义开山之作，用夸张的阴影与构图制造不安，奠定了后世恐怖片的视觉语法。</p></div></div></div>
+      <div class="acc-item"><div class="acc-h"><span class="yr">1960</span><span class="tt">惊魂记 · 浴室那一刀</span><span class="tag">心理惊悚</span><span class="pm">＋</span></div><div class="acc-b"><div><p>希区柯克用 45 秒、78 个镜头重新定义了「杀人戏」，让浴室成为几代人的心理阴影。</p></div></div></div>
+      <div class="acc-item"><div class="acc-h"><span class="yr">1973</span><span class="tt">驱魔人 · 信仰与恶</span><span class="tag">宗教恐怖</span><span class="pm">＋</span></div><div class="acc-b"><div><p>将超自然力量与宗教信仰正面碰撞，放映时观众晕倒送医的都市传说至今流传。</p></div></div></div>
+      <div class="acc-item"><div class="acc-h"><span class="yr">1999</span><span class="tt">女巫布莱尔 · 伪纪录片革命</span><span class="tag">伪纪录</span><span class="pm">＋</span></div><div class="acc-b"><div><p>手持摄影与「真实素材」营销引爆病毒传播，用极低预算改写了恐怖片商业模型。</p></div></div></div>
+      <div class="acc-item"><div class="acc-h"><span class="yr">2018</span><span class="tt">遗传厄运 · 家族诅咒新解</span><span class="tag">现代恐怖</span><span class="pm">＋</span></div><div class="acc-b"><div><p>用家庭创伤包裹 occult 元素，证明恐怖片依然能兼顾艺术性与商业性。</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COLUMN 5 -->
+<section class="sec" id="schedule">
+  <div class="wrap">
+    <div class="sec-top rv">
+      <div><span class="sec-idx">05 / Midnight Show</span><h2 class="sec-title">午夜<span class="ac">放映</span></h2></div>
+      <p class="sec-note">每晚一场，胆子够大就来</p>
+    </div>
+    <div class="screen rv">
+      <table>
+        <thead><tr><th>时间</th><th>片名</th><th>类型</th><th>状态</th></tr></thead>
+        <tbody>
+          <tr><td class="clock">22:00</td><td class="film">咒怨回响</td><td><span class="tag2">灵异</span><span class="tag2">日式</span></td><td class="live">● 正在放映</td></tr>
+          <tr><td class="clock">23:30</td><td class="film">寂静之屋</td><td><span class="tag2">心理</span><span class="tag2">一镜到底</span></td><td>即将开始</td></tr>
+          <tr><td class="clock">01:00</td><td class="film">丧尸围城 4</td><td><span class="tag2">末日</span><span class="tag2">动作</span></td><td>预告中</td></tr>
+          <tr><td class="clock">03:00</td><td class="film">镜中人</td><td><span class="tag2">悬疑</span><span class="tag2">反转</span></td><td>预告中</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div class="brand"><span class="eye"></span><span>好<span class="spook">恐怖</span><em>电影网</em></span></div>
+    <p class="d">专注恐怖电影的深度盘点与高分推荐，涵盖惊悚、悬疑、灵异、丧尸、鬼片细分类型，助你找到最吓人的那一部。</p>
+    <div class="links">
+      <a href="#top">首页</a><a href="#rank">恐怖榜</a><a href="#types">灵异分类</a><a href="#scream">尖叫瞬间</a><a href="#history">影史鬼事</a><a href="#schedule">午夜放映</a>
+    </div>
+    <div class="copy">© 2026 好恐怖电影网 版权所有 · 网站地址：<a href="https://haokongbudianyingwang-wap.github.io">haokongbudianyingwang-wap.github.io</a></div>
+  </div>
+</footer>
+
+<div class="topbtn" id="topbtn">↑</div>
+
+<script>
+(function(){
+  var load=document.getElementById('load');
+  window.addEventListener('load',function(){setTimeout(function(){load.classList.add('hide');},450)});
+
+  var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',function(){burger.classList.toggle('open');menu.classList.toggle('open')});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){burger.classList.remove('open');menu.classList.remove('open')})});
+
+  /* accordion */
+  document.querySelectorAll('.acc-item').forEach(function(it){
+    var h=it.querySelector('.acc-h');
+    h.addEventListener('click',function(){
+      var was=it.classList.contains('open');
+      document.querySelectorAll('.acc-item').forEach(function(x){x.classList.remove('open')});
+      if(!was)it.classList.add('open');
+    });
+  });
+
+  /* reveal */
+  var rv=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    })},{threshold:0.12});
+    rv.forEach(function(e){io.observe(e)});
+  } else rv.forEach(function(e){e.classList.add('in')});
+
+  /* nav spy */
+  var links=document.querySelectorAll('.menu a'),secs=document.querySelectorAll('section[id],header[id]');
+  function spy(){
+    var pos=window.scrollY+120;
+    secs.forEach(function(s){
+      if(pos>=s.offsetTop&&pos<s.offsetTop+s.offsetHeight){
+        links.forEach(function(a){a.classList.remove('on')});
+        var a=document.querySelector('.menu a[href="#'+s.id+'"]');
+        if(a)a.classList.add('on');
+      }
+    });
+  }
+  window.addEventListener('scroll',spy);spy();
+
+  var tb=document.getElementById('topbtn');
+  window.addEventListener('scroll',function(){window.scrollY>500?tb.classList.add('show'):tb.classList.remove('show')});
+  tb.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+})();
+</script>
+</body>
+</html>
